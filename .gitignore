@@ -1,0 +1,40 @@
+# Ignore virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore IDE/editor folders
+.vscode/
+.idea/
+*.swp
+
+# Ignore data/log files
+*.log
+*.csv
+*.tsv
+*.tmp
+*.bak
+
+# Ignore environment/config files
+.env
+*.env
+
+# Ignore MLflow artifacts
+mlruns/
+
+# Ignore ZenML cache or pipeline runs (nếu có)
+zenml_logs/
+zenml_data/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
