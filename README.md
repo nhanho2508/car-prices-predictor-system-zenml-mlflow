@@ -61,7 +61,7 @@ Used for generating predictions with new data:
 
 These pipelines are designed to work both independently and as part of a larger CI/CD MLOps workflow.
 
-![Inference Pipeline](assets/Inference_pipeline.png)
+![Inference Pipeline](assets/inference_pipeline.png)
 
 ## 🛠️ Tech Stacks
 
