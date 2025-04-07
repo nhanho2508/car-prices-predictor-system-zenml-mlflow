@@ -31,11 +31,14 @@ def outlier_detection_step(df: pd.DataFrame, column_name: str) -> pd.DataFrame:
 
     # Select only numeric columns
     df_numeric = df.select_dtypes(include=["number"])
+    df_non_numeric = df.drop(columns=df_numeric.columns)
 
-    # Detect and remove outliers
+    # Handle outlier in numeric columns
     detector = OutlierDetector(ZScoreOutlierDetection(threshold=3))
-    outliers = detector.detect_outliers(df_numeric)
-    df_cleaned = detector.handle_outliers(df_numeric, method="remove")
+    df_numeric_cleaned = detector.handle_outliers(df_numeric, method="remove")
 
-    logging.info(f"Outlier detection complete. Cleaned shape: {df_cleaned.shape}")
-    return df_cleaned
+    # Concat numeric columns and non-numeric columns
+    df_final = pd.concat([df_numeric_cleaned, df_non_numeric.loc[df_numeric_cleaned.index]], axis=1)
+
+    logging.info(f"Outlier detection complete. Cleaned shape: {df_final.shape}")
+    return df_final

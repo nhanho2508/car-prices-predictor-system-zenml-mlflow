@@ -50,7 +50,8 @@ def feature_engineering_step(
             'max_power': 'float',
             'seats': 'str'
         })),
-        ('log_transform', LogTransformation(features=['selling_price', 'max_power', 'age']))
+        ('log_transform', LogTransformation(features=['selling_price', 'max_power', 'age'])),
+
     ])
 
     

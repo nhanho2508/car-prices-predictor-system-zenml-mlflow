@@ -49,7 +49,6 @@ class SimpleTrainTestSplitStrategy(DataSplittingStrategy):
         logging.info("Applying simple train-test split.")
         X = df.drop(columns=[target_column])
         y = df[target_column]
-
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=self.test_size, random_state=self.random_state
         )
@@ -66,7 +65,7 @@ class StratifiedTrainTestSplitStrategy(DataSplittingStrategy):
         logging.info("Applying stratified train-test split.")
         X = df.drop(columns=[target_column])
         y = df[target_column]
-
+        
         X_train, X_test, y_train, y_test = train_test_split(
             X, y,
             test_size=self.test_size,

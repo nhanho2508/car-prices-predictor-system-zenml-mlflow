@@ -39,7 +39,8 @@ def ml_pipeline():
     'map_value',
     'strip_units',
     'type_cast',
-    'log_transform']
+    'log_transform',
+    'one_hot_encode']
     )
 
     # 4. Outlier removal

@@ -43,7 +43,6 @@ def model_building_step(
         raise TypeError("y_train must be a pandas Series.")
 
     # Column selection
-    print(X_train.dtypes)
     cat_cols = X_train.select_dtypes(include=["object", "category"]).columns
     num_cols = X_train.select_dtypes(exclude=["object", "category"]).columns
 
