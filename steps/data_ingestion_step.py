@@ -3,7 +3,7 @@ from .src.ingest_data import DataIngestorFactory
 from zenml import step
 
 
-@step(enable_cache=False)
+@step()
 def data_ingestion_step(file_path: str) -> pd.DataFrame:
     """
     Step to ingest data from a .zip file using the corresponding DataIngestor.
