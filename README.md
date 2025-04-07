@@ -86,5 +86,83 @@ This project leverages a modern MLOps toolset to automate and streamline the ent
 - Allows non-technical users (e.g., business teams) to engage with ML predictions through a simple UI.
 
 
+## Local Setup 👨🏼‍💻
+1. **Clone the Repository**:
+```bash
+git clone https://github.com/nhanho2508/car-prices-predictor-system-zenml-mlflow.git
+cd car-prices-predictor-system-zenml-mlflow
+```
+
+2. **Set Up a Virtual Environment**:
+```bash
+# For macOS and Linux:
+python3 -m venv venv
+
+# For Windows:
+python -m venv venv
+```
+
+3. **Activate the Virtual Environment**:
+```bash
+# For macOS and Linux:
+source venv/bin/activate
+
+# For Windows:
+.\venv\Scripts\activate
+```
+
+4. **Install Required Dependencies**:
+```bash
+pip install -r requirements.txt
+```
+
+## Zenml Integration ⛩️
+1. Install ZenML - https://docs.zenml.io/getting-started/installation 
+```bash
+pip install zenml["server"]
+zenml init   
+```
+
+2. Mlflow integration:
+```bash
+zenml integration install mlflow -y
+```
+
+3. Register mlflow in the stack:
+```bash   
+zenml experiment-tracker register mlflow_tracker --flavor=mlflow
+zenml experiment-tracker register mlflow_tracker --flavor=mlflow
+zenml model-deployer register mlflow_deployer --flavor=mlflow
+zenml stack register my_stack \
+  --orchestrator=default \
+  --artifact-store=default \
+  --model_deployer=mlflow_deployer \
+  --experiment_tracker=mlflow_tracker \
+  --set# if not already set
+```
 
 
+# Running the Project 🏃
+
+Follow these steps to run different components of the project:
+
+1. **Training Pipeline**: 
+   - To initiate the training pipeline, execute 
+
+   ```bash
+    python3 run_pipeline.py
+    ```
+2. **Continuous Integration Pipeline**:
+   - To execute the CI/CD pipeline for continuous integration, run
+
+   ```bash
+   python3 run_deployment.py
+   ```
+
+3. **Streamlit Application**:
+   - Start the Streamlit app to access the prediction interface using
+   
+    ```bash
+   streamlit run app.py
+   ```  
+ 
