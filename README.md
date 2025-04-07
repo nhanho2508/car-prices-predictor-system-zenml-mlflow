@@ -39,6 +39,8 @@ Responsible for end-to-end model training and evaluation. The steps include:
 - **Model Training**: Trains a regression model using the prepared data.
 - **Model Evaluation**: Computes performance metrics and logs them to MLflow.
 
+![Training Pipeline](assets/ml_pipeline.png)
+
 ### 2. `continuous_deployment_pipeline` 🚀
 
 This pipeline continuously monitors and deploys the best-performing model:
@@ -47,6 +49,7 @@ This pipeline continuously monitors and deploys the best-performing model:
 - **Model Tracker**: Logs the deployed model’s metadata for versioning and reproducibility.
 
 It ensures that the most accurate and up-to-date model is available in production.
+![Continuous Deployment Pipeline](assets/continuous_deployment_pipeline.png)
 
 ### 3. `inference_pipeline` 🧠
 
@@ -57,6 +60,8 @@ Used for generating predictions with new data:
 - **Predictor**: Sends the data to the deployed MLflow model and returns predictions.
 
 These pipelines are designed to work both independently and as part of a larger CI/CD MLOps workflow.
+
+![Inference Pipeline](assets/Inference_pipeline.png)
 
 ## 🛠️ Tech Stacks
 
@@ -85,6 +90,8 @@ This project leverages a modern MLOps toolset to automate and streamline the ent
 - Sends user inputs to the deployed model endpoint and displays the predicted selling price in real time.  
 - Allows non-technical users (e.g., business teams) to engage with ML predictions through a simple UI.
 
+![Streamlit app](assets/streamlit_UI.png)
+ 
 
 ## Local Setup 👨🏼‍💻
 1. **Clone the Repository**:
