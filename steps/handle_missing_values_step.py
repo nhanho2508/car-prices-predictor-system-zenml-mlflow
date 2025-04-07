@@ -7,7 +7,7 @@ from .src.handle_missing_values import (
 from zenml import step
 
 
-@step
+@step(enable_cache=False)
 def handle_missing_values_step(df: pd.DataFrame, strategy: str = "mean") -> pd.DataFrame:
     """
     Handles missing values using the specified strategy.
@@ -31,4 +31,5 @@ def handle_missing_values_step(df: pd.DataFrame, strategy: str = "mean") -> pd.D
         raise ValueError(f"Unsupported strategy '{strategy}'. Available: {list(strategy_map)}")
 
     handler = MissingValueHandler(strategy_map[strategy])
-    return handler.handle_missing_values(df)
+    df = handler.handle_missing_values(df)
+    return df

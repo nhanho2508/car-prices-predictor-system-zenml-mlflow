@@ -36,8 +36,13 @@ class DropMissingValuesStrategy(MissingValueHandlingStrategy):
         self.thresh = thresh
 
     def handle(self, df: pd.DataFrame) -> pd.DataFrame:
+        num_rows_with_nan = df.isnull().any(axis=1).sum()
+        logging.info(f"Number rows have at least 1 NaN: {num_rows_with_nan}")
+        logging.info(f"Shape before dropping: {df.shape}")
         logging.info(f"Dropping missing values | axis={self.axis}, thresh={self.thresh}")
-        return df.dropna(axis=self.axis, thresh=self.thresh)
+        df = df.dropna()
+        logging.info(f"Shape after dropping: {df.shape}")
+        return df
 
 
 # Strategy: Fill missing values using a specific method

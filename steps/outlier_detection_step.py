@@ -5,7 +5,7 @@ from .src.outlier_detection import OutlierDetector, ZScoreOutlierDetection
 from zenml import step
 
 
-@step
+@step(enable_cache=False)
 def outlier_detection_step(df: pd.DataFrame, column_name: str) -> pd.DataFrame:
     """
     Detects and removes outliers from the input DataFrame using Z-score method.

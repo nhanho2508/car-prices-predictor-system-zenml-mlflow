@@ -24,8 +24,6 @@ class FeatureEngineeringStrategy(ABC):
         """
         pass
 
-
-# Strategy: Log Transformation
 class LogTransformation(FeatureEngineeringStrategy):
     def __init__(self, features: list[str]):
         self.features = features
@@ -37,7 +35,6 @@ class LogTransformation(FeatureEngineeringStrategy):
             df_copy[feature] = np.log1p(df_copy[feature])
         logging.info("Log transformation completed.")
         return df_copy
-
 
 # Strategy: Standard Scaling
 class StandardScaling(FeatureEngineeringStrategy):
@@ -96,7 +93,7 @@ class FeatureEngineer:
         logging.info("Feature engineering strategy updated.")
         self._strategy = strategy
 
-    def apply(self, df: pd.DataFrame) -> pd.DataFrame:
+    def apply_feature_engineering(self, df: pd.DataFrame) -> pd.DataFrame:
         logging.info("Starting feature transformation...")
         return self._strategy.apply_transformation(df)
 

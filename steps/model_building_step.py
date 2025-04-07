@@ -7,6 +7,7 @@ from sklearn.base import RegressorMixin
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from zenml import ArtifactConfig, step
@@ -42,6 +43,7 @@ def model_building_step(
         raise TypeError("y_train must be a pandas Series.")
 
     # Column selection
+    print(X_train.dtypes)
     cat_cols = X_train.select_dtypes(include=["object", "category"]).columns
     num_cols = X_train.select_dtypes(exclude=["object", "category"]).columns
 
@@ -63,7 +65,7 @@ def model_building_step(
     # Full pipeline
     pipeline = Pipeline(steps=[
         ("preprocessor", preprocessor),
-        ("model", LinearRegression())
+        ("model", GradientBoostingRegressor())
     ])
 
     # MLflow autologging
@@ -72,7 +74,7 @@ def model_building_step(
 
     try:
         mlflow.sklearn.autolog()
-        logging.info("Training Linear Regression pipeline...")
+        logging.info("Training GB Regression pipeline...")
         pipeline.fit(X_train, y_train)
         logging.info("Model training complete.")
 

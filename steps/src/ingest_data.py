@@ -41,7 +41,8 @@ class ZipDataIngestor(DataIngestor):
             raise ValueError("Multiple CSV files found. Specify the target file.")
 
         csv_path = os.path.join(extract_dir, csv_files[0])
-        return pd.read_csv(csv_path)
+        df = pd.read_csv(csv_path)
+        return df
 
 
 # Factory to return the appropriate DataIngestor

@@ -18,7 +18,7 @@ from .src.feature_engineering import (
 from zenml import step
 
 
-@step
+@step(enable_cache=False)
 def feature_engineering_step(
     df: pd.DataFrame, strategies: list
 ) -> pd.DataFrame:
@@ -27,20 +27,18 @@ def feature_engineering_step(
 
     Parameters:
     - df (pd.DataFrame): Input dataset
-    - strategy (str): Strategy to apply ('log', 'standard_scaling', 'minmax_scaling', 'onehot_encoding',.....)
-    - features (list): List of feature column names to transform
+    - strategies (str): Strategy to apply ('log', 'standard_scaling', 'minmax_scaling', 'onehot_encoding',.....)
+
 
     Returns:
     - pd.DataFrame: Transformed dataset
     """
-    if not features:
-        features = []
 
     custom_strategies = OrderedDict([
-        ('extract_brand', SplitExtractAndDrop(source_column='name', new_column='brand')),
-        ('age', ColumnReplacerWithDifference(constant=2025, column='year')),
-        ('drop_year', ColumnDropper(columns=['year'])),
-        ('map_owner', ValueMapper('owner', {'First Owner': 1, 'Second Owner': 2, 'Third Owner': 3})),
+        ('extract_column', SplitExtractAndDrop(source_column='name', new_column='brand')),
+        ('column_difference', ColumnReplacerWithDifference(constant=2025, column='year', new_name='age')),
+        ('drop_column', ColumnDropper(columns=['year'])),
+        ('map_value', ValueMapper('owner', {'First Owner': 1, 'Second Owner': 2, 'Third Owner': 3})),
         ('strip_units', UnitRemover({
             'mileage': r'(kmpl|km/kg)',
             'engine': r'CC',
