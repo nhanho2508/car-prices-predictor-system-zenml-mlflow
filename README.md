@@ -4,6 +4,8 @@ Welcome to the **Used Car Price Prediction MLOps Project**! This end-to-end mach
 
 By leveraging modern MLOps tools like **ZenML**, **MLflow**, and **Streamlit**, the project offers a modular, scalable, and reproducible pipeline to automate everything from data ingestion and preprocessing to model training, deployment, and inference.
 
+![Overall Diagram](assets/car_prediction_pipeline.png)
+
 This project is built to guide you seamlessly through the complete ML workflow — featuring robust data cleaning, feature engineering, model evaluation, and continuous deployment strategies. It also ensures efficient model monitoring and version control via MLflow integration.
 
 Ultimately, this solution empowers businesses, resellers, or platforms to estimate car values accurately, enhancing decision-making, improving user trust, and optimizing pricing strategies.
