@@ -7,7 +7,7 @@ settings:
 
 # Configuration of the Model Control Plane
 model:
-  name: prices_predictor
+  name: prices_car_predictor
   license: Apache 2.0
-  description: Predictor of housing prices.
-  tags: ["regression", "housing", "price_prediction"]
+  description: Predictor of used car prices.
+  tags: ["regression", "car", "price_prediction"]

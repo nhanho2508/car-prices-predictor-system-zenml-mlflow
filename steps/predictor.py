@@ -25,8 +25,8 @@ def predictor(
 
     # Parse and clean the JSON input
     payload = json.loads(input_data)
-    payload.pop("columns", None)
-    payload.pop("index", None)
+    #payload.pop("columns", None)
+    #payload.pop("index", None)
 
     expected_cols = [
         "name",
@@ -44,10 +44,20 @@ def predictor(
     ]
 
     # Convert JSON to DataFrame and prepare input
-    df = pd.DataFrame(payload["data"], columns=expected_cols)
-    model_input = df.to_dict(orient="records")
+    # df = pd.DataFrame(payload["data"], columns=expected_cols)
+    # model_input = df.to_dict(orient="records")
 
-    # Run prediction
-    prediction = service.predict(model_input)
+    # # Run prediction
+    # prediction = service.predict(model_input)
+
+    # Convert the data into a DataFrame with the expected columns
+    df = pd.DataFrame(payload["data"], columns=expected_cols)
+
+    # Convert DataFrame to JSON list for prediction
+    json_list = json.loads(json.dumps(list(df.T.to_dict().values())))
+    data_array = np.array(json_list)
+
+    # Run the prediction
+    prediction = service.predict(data_array)
 
     return np.array(prediction)

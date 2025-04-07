@@ -120,16 +120,4 @@ class BivariateAnalyzer:
 
 # Example usage
 if __name__ == "__main__":
-    # Example usage of the BivariateAnalyzer with different strategies.
-
-    # Load the data
-    # df = pd.read_csv('../extracted-data/your_data_file.csv')
-
-    # Analyzing relationship between two numerical features
-    # analyzer = BivariateAnalyzer(NumericalVsNumericalAnalysis())
-    # analyzer.execute_analysis(df, 'Gr Liv Area', 'SalePrice')
-
-    # Analyzing relationship between a categorical and a numerical feature
-    # analyzer.set_strategy(CategoricalVsNumericalAnalysis())
-    # analyzer.execute_analysis(df, 'Overall Qual', 'SalePrice')
     pass

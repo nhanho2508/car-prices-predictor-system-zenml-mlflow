@@ -84,19 +84,6 @@ class SimpleMultivariateAnalysis(MultivariateAnalysisTemplate):
         plt.show()
 
 
-# Example usage
+
 if __name__ == "__main__":
-    # Example usage of the SimpleMultivariateAnalysis class.
-
-    # Load the data
-    # df = pd.read_csv('../extracted-data/your_data_file.csv')
-
-    # Perform Multivariate Analysis
-    # multivariate_analyzer = SimpleMultivariateAnalysis()
-
-    # Select important features for pair plot
-    # selected_features = df[['SalePrice', 'Gr Liv Area', 'Overall Qual', 'Total Bsmt SF', 'Year Built']]
-
-    # Execute the analysis
-    # multivariate_analyzer.analyze(selected_features)
     pass

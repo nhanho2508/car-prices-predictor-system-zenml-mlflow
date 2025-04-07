@@ -20,7 +20,7 @@ def run_main(stop_service: bool):
     """
     CLI entry point for running or stopping the prices predictor pipeline.
     """
-    model_name = "prices_predictor"
+    model_name = "prices_car_predictor"
     pipeline_name = "continuous_deployment_pipeline"
     step_name = "mlflow_model_deployer_step"
 
@@ -34,6 +34,11 @@ def run_main(stop_service: bool):
             model_name=model_name,
             running=True,
         )
+        if services:
+            print("[yellow] Cleaning up existing MLflow service(s)...[/yellow]")
+            for service in services:
+                service.stop(timeout=5)
+                service.deprovision(force=True)
 
         if services:
             services[0].stop(timeout=10)
